@@ -10,6 +10,26 @@ export const localeNames: Record<Locale, string> = {
 };
 
 export type TranslationKey =
+  | 'blog.faq_title'
+  | 'legal.last_updated'
+  | 'home.faq1_q'
+  | 'home.faq1_a'
+  | 'home.faq2_q'
+  | 'home.faq2_a'
+  | 'home.faq3_q'
+  | 'home.faq3_a'
+  | 'home.faq4_q'
+  | 'home.faq4_a'
+  | 'home.faq5_q'
+  | 'home.faq5_a'
+  | 'about.value1_title'
+  | 'about.value1_desc'
+  | 'about.value2_title'
+  | 'about.value2_desc'
+  | 'about.value3_title'
+  | 'about.value3_desc'
+  | 'qr.error_too_much'
+  | 'qr.contrast_warning'
   | 'site.title'
   | 'site.description'
   | 'nav.home'
@@ -46,7 +66,6 @@ export type TranslationKey =
   | 'home.faq_subtitle'
   | 'home.blog_title'
   | 'home.blog_subtitle'
-  | 'home.demo_title'
   | 'feature.private'
   | 'feature.private_desc'
   | 'feature.svg_png'
@@ -202,7 +221,16 @@ const en: Translations = {
   'home.faq_subtitle': 'Everything you need to know about QR codes.',
   'home.blog_title': 'Latest from Blog',
   'home.blog_subtitle': 'Tips, guides, and best practices for QR codes.',
-  'home.demo_title': 'Live Demo',
+  'home.faq1_q': 'Are QR codes free to generate?',
+  'home.faq1_a': 'Yes! All our QR code tools are completely free with no signup required. You can generate unlimited QR codes.',
+  'home.faq2_q': 'Do QR codes expire?',
+  'home.faq2_a': 'No, static QR codes generated with our tool never expire. They will work as long as the content they link to is available.',
+  'home.faq3_q': 'Is my data safe?',
+  'home.faq3_a': 'Absolutely. All QR code generation happens entirely in your browser. No data is ever sent to any server.',
+  'home.faq4_q': 'Can I add a logo to my QR code?',
+  'home.faq4_a': 'Yes! Upload a logo image and we will place it in the center of your QR code. Error correction automatically increases to ensure scannability.',
+  'home.faq5_q': 'What formats can I download?',
+  'home.faq5_a': 'You can download QR codes in both PNG (raster) and SVG (vector) formats. SVG is ideal for printing at any size without quality loss.',
   'feature.private': '100% Private',
   'feature.private_desc': 'All processing happens in your browser. Your data never touches a server.',
   'feature.svg_png': 'SVG + PNG',
@@ -236,6 +264,8 @@ const en: Translations = {
   'qr.remove_logo': 'Remove',
   'qr.choose_file': 'Choose file...',
   'qr.empty_state': 'Enter data to generate QR code',
+  'qr.error_too_much': 'Too much data for QR code. Please shorten your input.',
+  'qr.contrast_warning': 'Warning: Foreground and background colors are too similar. The QR code may be difficult to scan.',
   'qr.show_password': 'Show password',
   'qr.hide_password': 'Hide password',
   'tool.how_to_title': 'How to Use',
@@ -306,11 +336,19 @@ const en: Translations = {
   'qr.lastname': 'Last Name',
   'about.title': 'About QR Tools',
   'about.description': 'QR Tools is a free, open QR code generator built with privacy at its core. All QR code generation happens entirely in your browser — no data is ever sent to a server. We believe tools should be fast, private, and free.',
+  'about.value1_title': 'Privacy First',
+  'about.value1_desc': 'All processing happens in your browser. No servers, no tracking.',
+  'about.value2_title': 'Open & Free',
+  'about.value2_desc': 'No signup, no watermark, no hidden costs. Ever.',
+  'about.value3_title': 'Multilingual',
+  'about.value3_desc': 'Available in English, Chinese, Spanish, and Japanese.',
   'blog.title': 'Blog',
   'blog.subtitle': 'Guides, tips, and best practices for QR codes.',
   'blog.published': 'Published',
   'blog.related': 'Related Tools',
   'blog.back': 'Back to Blog',
+  'blog.faq_title': 'FAQ',
+  'legal.last_updated': 'Last updated: June 27, 2026',
   'encryption.wpa': 'WPA/WPA2',
   'encryption.wep': 'WEP',
   'encryption.none': 'None',
@@ -357,7 +395,16 @@ const zhTW: Translations = {
   'home.faq_subtitle': '關於 QR Code 您需要知道的一切。',
   'home.blog_title': '最新文章',
   'home.blog_subtitle': 'QR Code 的技巧、指南和最佳實踐。',
-  'home.demo_title': '即時示範',
+  'home.faq1_q': '產生 QR Code 是免費的嗎？',
+  'home.faq1_a': '是的！我們所有的 QR Code 工具完全免費，無需註冊。您可以無限制地產生 QR Code。',
+  'home.faq2_q': 'QR Code 會過期嗎？',
+  'home.faq2_a': '不會，我們的工具產生的靜態 QR Code 永遠不會過期。',
+  'home.faq3_q': '我的資料安全嗎？',
+  'home.faq3_a': '絕對安全。所有 QR Code 產生完全在您的瀏覽器中完成。任何資料都不會發送到伺服器。',
+  'home.faq4_q': '可以在 QR Code 中加入 Logo 嗎？',
+  'home.faq4_a': '可以！上傳 Logo 圖片，我們會將它放在 QR Code 的中央。錯誤修正會自動提高以確保可掃描。',
+  'home.faq5_q': '可以下載哪些格式？',
+  'home.faq5_a': '您可以下載 PNG（點陣）和 SVG（向量）格式的 QR Code。SVG 適合在任何尺寸下無損列印。',
   'feature.private': '100% 隱私',
   'feature.private_desc': '所有處理都在您的瀏覽器中完成。您的資料永遠不會觸及伺服器。',
   'feature.svg_png': 'SVG + PNG',
@@ -391,6 +438,8 @@ const zhTW: Translations = {
   'qr.remove_logo': '移除',
   'qr.choose_file': '選擇檔案...',
   'qr.empty_state': '輸入資料以產生 QR Code',
+  'qr.error_too_much': '資料過多，無法產生 QR Code。請縮短您的輸入。',
+  'qr.contrast_warning': '警告：前景色和背景色太相似，QR Code 可能難以掃描。',
   'qr.show_password': '顯示密碼',
   'qr.hide_password': '隱藏密碼',
   'tool.how_to_title': '如何使用',
@@ -461,11 +510,19 @@ const zhTW: Translations = {
   'qr.lastname': '姓氏',
   'about.title': '關於 QR 工具',
   'about.description': 'QR 工具是一個以隱私為核心的免費開源 QR Code 產生器。所有 QR Code 產生完全在您的瀏覽器中完成 — 資料永遠不會發送到伺服器。我們相信工具應該快速、隱私且免費。',
+  'about.value1_title': '隱私優先',
+  'about.value1_desc': '所有處理都在您的瀏覽器中完成。沒有伺服器，沒有追蹤。',
+  'about.value2_title': '開放且免費',
+  'about.value2_desc': '免註冊、無浮水印、無隱藏費用。',
+  'about.value3_title': '多語系',
+  'about.value3_desc': '支援英文、中文、西班牙文和日文。',
   'blog.title': '部落格',
   'blog.subtitle': 'QR Code 的指南、技巧和最佳實踐。',
   'blog.published': '發布於',
   'blog.related': '相關工具',
   'blog.back': '返回部落格',
+  'blog.faq_title': '常見問題',
+  'legal.last_updated': '最後更新：2026 年 6 月 27 日',
   'encryption.wpa': 'WPA/WPA2',
   'encryption.wep': 'WEP',
   'encryption.none': '無',
@@ -512,11 +569,20 @@ const es: Translations = {
   'home.faq_subtitle': 'Todo lo que necesitas saber sobre códigos QR.',
   'home.blog_title': 'Últimos artículos',
   'home.blog_subtitle': 'Consejos, guías y mejores prácticas para códigos QR.',
-  'home.demo_title': 'Demo en vivo',
+  'home.faq1_q': '¿Es gratis generar códigos QR?',
+  'home.faq1_a': '¡Sí! Todas nuestras herramientas de códigos QR son completamente gratuitas sin registro.',
+  'home.faq2_q': '¿Los códigos QR caducan?',
+  'home.faq2_a': 'No, los códigos QR estáticos nunca caducan.',
+  'home.faq3_q': '¿Mis datos están seguros?',
+  'home.faq3_a': 'Absolutamente. Toda la generación ocurre en tu navegador. Ningún dato se envía a un servidor.',
+  'home.faq4_q': '¿Puedo añadir un logo a mi código QR?',
+  'home.faq4_a': '¡Sí! Sube un logo y lo colocaremos en el centro de tu código QR.',
+  'home.faq5_q': '¿Qué formatos puedo descargar?',
+  'home.faq5_a': 'Puedes descargar en PNG (ráster) y SVG (vectorial).',
   'feature.private': '100% Privado',
   'feature.private_desc': 'Todo el procesamiento ocurre en tu navegador. Tus datos nunca tocan un servidor.',
   'feature.svg_png': 'SVG + PNG',
-  'feature.svg_png_desc': 'Descarga códigos QR en formato vectorial (SVG) y raster (PNG).',
+  'feature.svg_png_desc': 'Descarga códigos QR en formato vectorial (SVG) y ráster (PNG).',
   'feature.logo': 'Soporte de Logo',
   'feature.logo_desc': 'Añade tu logo al centro del código QR para reconocimiento de marca.',
   'feature.no_watermark': 'Sin marca de agua',
@@ -546,6 +612,8 @@ const es: Translations = {
   'qr.remove_logo': 'Quitar',
   'qr.choose_file': 'Elegir archivo...',
   'qr.empty_state': 'Ingresa datos para generar el código QR',
+  'qr.error_too_much': 'Demasiados datos para el código QR. Por favor acorta tu entrada.',
+  'qr.contrast_warning': 'Advertencia: Los colores de primer plano y fondo son demasiado similares. El código QR puede ser difícil de escanear.',
   'qr.show_password': 'Mostrar contraseña',
   'qr.hide_password': 'Ocultar contraseña',
   'tool.how_to_title': 'Cómo usar',
@@ -616,11 +684,19 @@ const es: Translations = {
   'qr.lastname': 'Apellido',
   'about.title': 'Acerca de QR Tools',
   'about.description': 'QR Tools es un generador de códigos QR gratuito y de código abierto construido con la privacidad como núcleo. Toda la generación de códigos QR ocurre completamente en tu navegador — ningún dato se envía a un servidor. Creemos que las herramientas deben ser rápidas, privadas y gratuitas.',
+  'about.value1_title': 'Privacidad Primero',
+  'about.value1_desc': 'Todo el procesamiento ocurre en tu navegador.',
+  'about.value2_title': 'Abierto y Gratuito',
+  'about.value2_desc': 'Sin registro, sin marca de agua, sin costos ocultos.',
+  'about.value3_title': 'Multilingüe',
+  'about.value3_desc': 'Disponible en inglés, chino, español y japonés.',
   'blog.title': 'Blog',
   'blog.subtitle': 'Guías, consejos y mejores prácticas para códigos QR.',
   'blog.published': 'Publicado',
   'blog.related': 'Herramientas relacionadas',
   'blog.back': 'Volver al blog',
+  'blog.faq_title': 'Preguntas frecuentes',
+  'legal.last_updated': 'Última actualización: 27 de junio de 2026',
   'encryption.wpa': 'WPA/WPA2',
   'encryption.wep': 'WEP',
   'encryption.none': 'Ninguno',
@@ -667,7 +743,16 @@ const ja: Translations = {
   'home.faq_subtitle': 'QRコードについて知るべきことすべて。',
   'home.blog_title': '最新のブログ記事',
   'home.blog_subtitle': 'QRコードのヒント、ガイド、ベストプラクティス。',
-  'home.demo_title': 'ライブデモ',
+  'home.faq1_q': 'QRコードの生成は無料ですか？',
+  'home.faq1_a': 'はい！すべてのQRコードツールは完全に無料で、登録は不要です。無制限にQRコードを生成できます。',
+  'home.faq2_q': 'QRコードの有効期限は切れますか？',
+  'home.faq2_a': 'いいえ、静的QRコードの有効期限は切れません。',
+  'home.faq3_q': 'データは安全ですか？',
+  'home.faq3_a': '絶対に安全です。すべてのQRコード生成はブラウザ内で完全に行われます。',
+  'home.faq4_q': 'QRコードにロゴを追加できますか？',
+  'home.faq4_a': 'はい！ロゴ画像をアップロードすると、QRコードの中央に配置します。',
+  'home.faq5_q': 'どの形式でダウンロードできますか？',
+  'home.faq5_a': 'PNG（ラスター）とSVG（ベクター）の両方の形式でダウンロードできます。',
   'feature.private': '100%プライベート',
   'feature.private_desc': 'すべての処理はブラウザ内で行われます。データがサーバーに触れることはありません。',
   'feature.svg_png': 'SVG + PNG',
@@ -701,6 +786,8 @@ const ja: Translations = {
   'qr.remove_logo': '削除',
   'qr.choose_file': 'ファイルを選択...',
   'qr.empty_state': 'データを入力してQRコードを生成',
+  'qr.error_too_much': 'QRコードにはデータが多すぎます。入力を短くしてください。',
+  'qr.contrast_warning': '警告：前景色と背景色が似すぎています。QRコードがスキャンしにくい場合があります。',
   'qr.show_password': 'パスワードを表示',
   'qr.hide_password': 'パスワードを非表示',
   'tool.how_to_title': '使い方',
@@ -771,11 +858,19 @@ const ja: Translations = {
   'qr.lastname': '姓',
   'about.title': 'QRツールについて',
   'about.description': 'QRツールは、プライバシーを核心として構築された無料のオープンQRコードジェネレーターです。すべてのQRコード生成は完全にブラウザ内で行われ、データがサーバーに送信されることはありません。ツールは高速、プライベート、そして無料であるべきだと信じています。',
+  'about.value1_title': 'プライバシーファースト',
+  'about.value1_desc': 'すべての処理はブラウザ内で行われます。サーバーも追跡もありません。',
+  'about.value2_title': 'オープン＆フリー',
+  'about.value2_desc': '登録不要、透かしなし、隠れた費用なし。',
+  'about.value3_title': '多言語対応',
+  'about.value3_desc': '英語、中国語、スペイン語、日本語で利用可能。',
   'blog.title': 'ブログ',
   'blog.subtitle': 'QRコードのガイド、ヒント、ベストプラクティス。',
   'blog.published': '公開日',
   'blog.related': '関連ツール',
   'blog.back': 'ブログに戻る',
+  'blog.faq_title': 'よくある質問',
+  'legal.last_updated': '最終更新：2026年6月27日',
   'encryption.wpa': 'WPA/WPA2',
   'encryption.wep': 'WEP',
   'encryption.none': 'なし',

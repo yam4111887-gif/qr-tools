@@ -25,7 +25,7 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: Locale }) {
     <div className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 text-sm text-slate-600 hover:text-slate-900 transition-colors"
+        className="flex items-center gap-1.5 text-sm text-slate-600 hover:text-slate-900 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-1 rounded"
       >
         <Globe size={16} />
         <span className="hidden sm:inline">{localeNames[currentLocale]}</span>
@@ -38,7 +38,7 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: Locale }) {
               <button
                 key={l}
                 onClick={() => switchLocale(l)}
-                className={`w-full text-left px-3 py-1.5 text-sm hover:bg-slate-50 ${
+                className={`w-full text-left px-3 py-1.5 text-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-1 ${
                   l === currentLocale ? 'text-emerald-600 font-medium' : 'text-slate-600'
                 }`}
               >

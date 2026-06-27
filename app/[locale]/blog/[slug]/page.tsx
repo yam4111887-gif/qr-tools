@@ -86,7 +86,7 @@ export default async function BlogPost({ params }: { params: Promise<{ locale: s
 
         {post.faq.length > 0 && (
           <div className="mt-12 rounded-xl bg-slate-50 p-6">
-            <h2 className="text-lg font-bold text-slate-900 mb-4">FAQ</h2>
+            <h2 className="text-lg font-bold text-slate-900 mb-4">{t(loc, 'blog.faq_title')}</h2>
             <div className="space-y-3">
               {post.faq.map((faq, i) => (
                 <div key={i}>

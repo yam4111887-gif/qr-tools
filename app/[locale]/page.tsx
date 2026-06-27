@@ -1,9 +1,8 @@
 import Link from 'next/link';
-import { ShieldCheck, FileCode2, ImagePlus, Ban, ChevronDown, ArrowRight } from 'lucide-react';
+import { ShieldCheck, FileCode2, ImagePlus, Ban, ChevronDown, ArrowRight, Lock, Gift, Zap } from 'lucide-react';
 import { locales, defaultLocale, type Locale, t } from '@/lib/i18n';
 import { toolSlugs, getToolName, getToolDesc, type ToolSlug } from '@/lib/constants';
 import { blogPosts } from '@/data/blog';
-import { QRGenerator } from '@/components/tools/QRGenerator';
 
 export function generateStaticParams() {
   return locales.map(locale => ({ locale }));
@@ -24,56 +23,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const loc = (locales.includes(locale as any) ? locale : defaultLocale) as Locale;
 
   const faqs = [
-    {
-      q: loc === 'en' ? 'Are QR codes free to generate?' :
-         loc === 'zh-TW' ? '產生 QR Code 是免費的嗎？' :
-         loc === 'es' ? '¿Es gratis generar códigos QR?' :
-         'QRコードの生成は無料ですか？',
-      a: loc === 'en' ? 'Yes! All our QR code tools are completely free with no signup required. You can generate unlimited QR codes.' :
-         loc === 'zh-TW' ? '是的！我們所有的 QR Code 工具完全免費，無需註冊。您可以無限制地產生 QR Code。' :
-         loc === 'es' ? '¡Sí! Todas nuestras herramientas de códigos QR son completamente gratuitas sin registro.' :
-         'はい！すべてのQRコードツールは完全に無料で、登録は不要です。無制限にQRコードを生成できます。',
-    },
-    {
-      q: loc === 'en' ? 'Do QR codes expire?' :
-         loc === 'zh-TW' ? 'QR Code 會過期嗎？' :
-         loc === 'es' ? '¿Los códigos QR caducan?' :
-         'QRコードの有効期限は切れますか？',
-      a: loc === 'en' ? 'No, static QR codes generated with our tool never expire. They will work as long as the content they link to is available.' :
-         loc === 'zh-TW' ? '不會，我們的工具產生的靜態 QR Code 永遠不會過期。' :
-         loc === 'es' ? 'No, los códigos QR estáticos nunca caducan.' :
-         'いいえ、静的QRコードの有効期限は切れません。',
-    },
-    {
-      q: loc === 'en' ? 'Is my data safe?' :
-         loc === 'zh-TW' ? '我的資料安全嗎？' :
-         loc === 'es' ? '¿Mis datos están seguros?' :
-         'データは安全ですか？',
-      a: loc === 'en' ? 'Absolutely. All QR code generation happens entirely in your browser. No data is ever sent to any server.' :
-         loc === 'zh-TW' ? '絕對安全。所有 QR Code 產生完全在您的瀏覽器中完成。任何資料都不會發送到伺服器。' :
-         loc === 'es' ? 'Absolutamente. Toda la generación ocurre en tu navegador. Ningún dato se envía a un servidor.' :
-         '絶対に安全です。すべてのQRコード生成はブラウザ内で完全に行われます。',
-    },
-    {
-      q: loc === 'en' ? 'Can I add a logo to my QR code?' :
-         loc === 'zh-TW' ? '可以在 QR Code 中加入 Logo 嗎？' :
-         loc === 'es' ? '¿Puedo añadir un logo a mi código QR?' :
-         'QRコードにロゴを追加できますか？',
-      a: loc === 'en' ? 'Yes! Upload a logo image and we will place it in the center of your QR code. Error correction automatically increases to ensure scannability.' :
-         loc === 'zh-TW' ? '可以！上傳 Logo 圖片，我們會將它放在 QR Code 的中央。錯誤修正會自動提高以確保可掃描。' :
-         loc === 'es' ? '¡Sí! Sube un logo y lo colocaremos en el centro de tu código QR.' :
-         'はい！ロゴ画像をアップロードすると、QRコードの中央に配置します。',
-    },
-    {
-      q: loc === 'en' ? 'What formats can I download?' :
-         loc === 'zh-TW' ? '可以下載哪些格式？' :
-         loc === 'es' ? '¿Qué formatos puedo descargar?' :
-         'どの形式でダウンロードできますか？',
-      a: loc === 'en' ? 'You can download QR codes in both PNG (raster) and SVG (vector) formats. SVG is ideal for printing at any size without quality loss.' :
-         loc === 'zh-TW' ? '您可以下載 PNG（點陣）和 SVG（向量）格式的 QR Code。SVG 適合在任何尺寸下無損列印。' :
-         loc === 'es' ? 'Puedes descargar en PNG (raster) y SVG (vectorial).' :
-         'PNG（ラスター）とSVG（ベクター）の両方の形式でダウンロードできます。',
-    },
+    { q: t(loc, 'home.faq1_q'), a: t(loc, 'home.faq1_a') },
+    { q: t(loc, 'home.faq2_q'), a: t(loc, 'home.faq2_a') },
+    { q: t(loc, 'home.faq3_q'), a: t(loc, 'home.faq3_a') },
+    { q: t(loc, 'home.faq4_q'), a: t(loc, 'home.faq4_a') },
+    { q: t(loc, 'home.faq5_q'), a: t(loc, 'home.faq5_a') },
   ];
 
   const features = [
@@ -81,6 +35,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     { icon: FileCode2, title: t(loc, 'feature.svg_png'), desc: t(loc, 'feature.svg_png_desc') },
     { icon: ImagePlus, title: t(loc, 'feature.logo'), desc: t(loc, 'feature.logo_desc') },
     { icon: Ban, title: t(loc, 'feature.no_watermark'), desc: t(loc, 'feature.no_watermark_desc') },
+  ];
+
+  const heroFeatures = [
+    { icon: Lock, title: t(loc, 'feature.private'), desc: t(loc, 'feature.private_desc') },
+    { icon: FileCode2, title: t(loc, 'feature.svg_png'), desc: t(loc, 'feature.svg_png_desc') },
+    { icon: ImagePlus, title: t(loc, 'feature.logo'), desc: t(loc, 'feature.logo_desc') },
+    { icon: Gift, title: t(loc, 'feature.no_watermark'), desc: t(loc, 'feature.no_watermark_desc') },
   ];
 
   const recentPosts = blogPosts.slice(0, 3);
@@ -123,11 +84,17 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </Link>
               </div>
             </div>
-            <div className="flex justify-center mt-8 lg:mt-0">
-              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
-                <div className="flex items-center justify-center h-[300px] w-[300px] bg-white rounded-lg">
-                  <QRGenerator qrType="url" locale={loc} />
-                </div>
+            <div className="mt-8 lg:mt-0">
+              <div className="grid gap-4 sm:grid-cols-2">
+                {heroFeatures.map((feature) => (
+                  <div key={feature.title} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                    <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-50">
+                      <feature.icon size={20} className="text-emerald-600" />
+                    </div>
+                    <h3 className="font-semibold text-slate-900">{feature.title}</h3>
+                    <p className="mt-1 text-sm text-slate-500">{feature.desc}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

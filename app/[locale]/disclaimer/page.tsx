@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { locales, defaultLocale, type Locale } from '@/lib/i18n';
+import { locales, defaultLocale, type Locale, t } from '@/lib/i18n';
 import { siteConfig } from '@/lib/constants';
 
 export function generateStaticParams() {
@@ -11,7 +11,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const loc = (locales.includes(locale as any) ? locale : defaultLocale) as Locale;
   return {
     title: loc === 'en' ? 'Disclaimer' : loc === 'zh-TW' ? '免責聲明' : loc === 'es' ? 'Aviso Legal' : '免責事項',
-    alternates: { canonical: `/${loc}/disclaimer` },
+    alternates: {
+      canonical: `/${loc}/disclaimer`,
+      languages: Object.fromEntries(locales.map(l => [l, `https://${siteConfig.domain}/${l}/disclaimer`])),
+    },
   };
 }
 
@@ -58,7 +61,7 @@ export default async function DisclaimerPage({ params }: { params: Promise<{ loc
             <p className="mt-1 text-sm text-slate-600 leading-relaxed">{s.p}</p>
           </div>
         ))}
-        <p className="mt-8 text-xs text-slate-400">Last updated: 2026-06-27</p>
+        <p className="mt-8 text-xs text-slate-400">{t(loc, 'legal.last_updated')}</p>
       </div>
     </>
   );

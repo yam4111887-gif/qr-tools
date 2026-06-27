@@ -1,45 +1,8 @@
-import type { Metadata } from 'next';
 import { locales, type Locale, t } from '@/lib/i18n';
 import { siteConfig } from '@/lib/constants';
-import { QRGenerator, type QRType } from '@/components/tools/QRGenerator';
-import { AdSlot } from '@/components/ui/AdSlot';
 import { ChevronDown } from 'lucide-react';
 
 export type ToolSlugKey = 'url' | 'text' | 'wifi' | 'vcard' | 'email' | 'sms';
-
-interface ToolPageProps {
-  params: Promise<{ locale: Locale }>;
-  qrType: QRType;
-  slug: string;
-  titleKey: 'tool.url' | 'tool.text' | 'tool.wifi' | 'tool.vcard' | 'tool.email' | 'tool.sms';
-  descKey: 'tool.url_desc' | 'tool.text_desc' | 'tool.wifi_desc' | 'tool.vcard_desc' | 'tool.email_desc' | 'tool.sms_desc';
-}
-
-export async function generateToolMetadata({ params, titleKey, descKey }: Pick<ToolPageProps, 'params' | 'titleKey' | 'descKey'>): Promise<Metadata> {
-  const { locale } = await params;
-  return {
-    title: t(locale, titleKey),
-    description: t(locale, descKey),
-    alternates: {
-      canonical: `/${locale}/${slugFromTitle(titleKey)}`,
-      languages: Object.fromEntries(
-        locales.map(l => [l, `https://${siteConfig.domain}/${l}/${slugFromTitle(titleKey)}`])
-      ),
-    },
-  };
-}
-
-function slugFromTitle(key: string): string {
-  const map: Record<string, string> = {
-    'tool.url': 'url-qr-code',
-    'tool.text': 'text-qr-code',
-    'tool.wifi': 'wifi-qr-code',
-    'tool.vcard': 'vcard-qr-code',
-    'tool.email': 'email-qr-code',
-    'tool.sms': 'sms-qr-code',
-  };
-  return map[key] || '';
-}
 
 export function faqSchemaForTool(locale: Locale, toolKey: ToolSlugKey) {
   const faqs = getToolFaqs(locale, toolKey);

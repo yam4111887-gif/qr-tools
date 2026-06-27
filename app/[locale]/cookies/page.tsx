@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { locales, defaultLocale, type Locale } from '@/lib/i18n';
+import { locales, defaultLocale, type Locale, t } from '@/lib/i18n';
 import { siteConfig } from '@/lib/constants';
 
 export function generateStaticParams() {
@@ -11,7 +11,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const loc = (locales.includes(locale as any) ? locale : defaultLocale) as Locale;
   return {
     title: loc === 'en' ? 'Cookie Policy' : loc === 'zh-TW' ? 'Cookie 政策' : loc === 'es' ? 'Política de Cookies' : 'Cookieポリシー',
-    alternates: { canonical: `/${loc}/cookies` },
+    alternates: {
+      canonical: `/${loc}/cookies`,
+      languages: Object.fromEntries(locales.map(l => [l, `https://${siteConfig.domain}/${l}/cookies`])),
+    },
   };
 }
 
@@ -54,7 +57,7 @@ export default async function CookiesPage({ params }: { params: Promise<{ locale
             <p className="mt-1 text-sm text-slate-600 leading-relaxed">{s.p}</p>
           </div>
         ))}
-        <p className="mt-8 text-xs text-slate-400">Last updated: 2026-06-27</p>
+        <p className="mt-8 text-xs text-slate-400">{t(loc, 'legal.last_updated')}</p>
       </div>
     </>
   );

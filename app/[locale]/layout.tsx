@@ -26,13 +26,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
       url: siteConfig.url,
       siteName: title,
       type: 'website',
-      images: [{ url: '/og-image.svg', width: 1200, height: 630 }],
+      // TODO: Replace with a proper 1200x630 PNG OG image for social sharing
+      images: [{ url: '/icon.svg', width: 512, height: 512 }],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${title} — Free QR Code Generator`,
       description,
-      images: ['/og-image.svg'],
+      // TODO: Replace with a proper PNG OG image for Twitter
+      images: ['/icon.svg'],
     },
     alternates: {
       canonical: `/${locale}`,

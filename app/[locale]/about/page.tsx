@@ -25,12 +25,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   const loc = (locales.includes(locale as any) ? locale : defaultLocale) as Locale;
 
   const values = [
-    { icon: ShieldCheck, title: loc === 'en' ? 'Privacy First' : loc === 'zh-TW' ? '隱私優先' : loc === 'es' ? 'Privacidad Primero' : 'プライバシーファースト',
-      desc: loc === 'en' ? 'All processing happens in your browser. No servers, no tracking.' : loc === 'zh-TW' ? '所有處理都在您的瀏覽器中完成。沒有伺服器，沒有追蹤。' : loc === 'es' ? 'Todo el procesamiento ocurre en tu navegador.' : 'すべての処理はブラウザ内で行われます。' },
-    { icon: Code2, title: loc === 'en' ? 'Open & Free' : loc === 'zh-TW' ? '開放且免費' : loc === 'es' ? 'Abierto y Gratuito' : 'オープン＆フリー',
-      desc: loc === 'en' ? 'No signup, no watermark, no hidden costs. Ever.' : loc === 'zh-TW' ? '免註冊、無浮水印、無隱藏費用。' : loc === 'es' ? 'Sin registro, sin marca de agua, sin costos ocultos.' : '登録不要、透かしなし、隠れた費用なし。' },
-    { icon: Globe, title: loc === 'en' ? 'Multilingual' : loc === 'zh-TW' ? '多語系' : loc === 'es' ? 'Multilingüe' : '多言語対応',
-      desc: loc === 'en' ? 'Available in English, Chinese, Spanish, and Japanese.' : loc === 'zh-TW' ? '支援英文、中文、西班牙文和日文。' : loc === 'es' ? 'Disponible en inglés, chino, español y japonés.' : '英語、中国語、スペイン語、日本語で利用可能。' },
+    { icon: ShieldCheck, title: t(loc, 'about.value1_title'), desc: t(loc, 'about.value1_desc') },
+    { icon: Code2, title: t(loc, 'about.value2_title'), desc: t(loc, 'about.value2_desc') },
+    { icon: Globe, title: t(loc, 'about.value3_title'), desc: t(loc, 'about.value3_desc') },
   ];
 
   return (

@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import QRCode from 'qrcode';
-import { Download, Upload, Shield, Loader2, Eye, EyeOff, X } from 'lucide-react';
+import { Download, Upload, Shield, Loader2, Eye, EyeOff, X, AlertTriangle } from 'lucide-react';
 import { type Locale, t } from '@/lib/i18n';
 import { formatWiFiQR, formatVCardQR, formatEmailQR, formatSMSQR, formatUrlQR } from '@/lib/qr-types';
 
@@ -17,6 +17,21 @@ const COLORS = {
   WHITE: '#ffffff',
   EMERALD: '#059669',
 };
+
+function hexToLuminance(hex: string): number {
+  const r = parseInt(hex.slice(1, 3), 16) / 255;
+  const g = parseInt(hex.slice(3, 5), 16) / 255;
+  const b = parseInt(hex.slice(5, 7), 16) / 255;
+  const toLinear = (c: number) => (c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4));
+  return 0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
+}
+
+function hasContrast(fg: string, bg: string): boolean {
+  const l1 = hexToLuminance(fg);
+  const l2 = hexToLuminance(bg);
+  const ratio = (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+  return ratio >= 4.5;
+}
 
 export function QRGenerator({ qrType, locale }: QRGeneratorProps) {
   // Input states
@@ -47,9 +62,10 @@ export function QRGenerator({ qrType, locale }: QRGeneratorProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   // Output
-  const [canvasRef] = useState(() => ({ current: null as HTMLCanvasElement | null }));
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [svgString, setSvgString] = useState('');
   const [generating, setGenerating] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const debounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
@@ -105,6 +121,7 @@ export function QRGenerator({ qrType, locale }: QRGeneratorProps) {
       const data = getQRData();
       if (!data) {
         setSvgString('');
+        setErrorMessage('');
         return;
       }
 
@@ -122,6 +139,7 @@ export function QRGenerator({ qrType, locale }: QRGeneratorProps) {
           width: size,
         });
         setSvgString(svg);
+        setErrorMessage('');
 
         // Draw to canvas for PNG export and preview
         const canvas = canvasRef.current;
@@ -155,7 +173,8 @@ export function QRGenerator({ qrType, locale }: QRGeneratorProps) {
           }
         }
       } catch {
-        // Invalid input or too much data
+        setSvgString('');
+        setErrorMessage(t(locale, 'qr.error_too_much'));
       } finally {
         setGenerating(false);
       }
@@ -164,7 +183,7 @@ export function QRGenerator({ qrType, locale }: QRGeneratorProps) {
     return () => {
       if (debounceRef.current) clearTimeout(debounceRef.current);
     };
-  }, [getQRData, fgColor, bgColor, size, internalErrorLevel, logoDataUrl, canvasRef]);
+  }, [getQRData, fgColor, bgColor, size, internalErrorLevel, logoDataUrl, locale]);
 
   // Logo upload
   const handleLogoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -197,6 +216,8 @@ export function QRGenerator({ qrType, locale }: QRGeneratorProps) {
     link.click();
     URL.revokeObjectURL(link.href);
   };
+
+  const showContrastWarning = svgString !== '' && !hasContrast(fgColor, bgColor);
 
   const inputClass = 'w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500';
   const labelClass = 'block text-sm font-medium text-slate-700 mb-1';
@@ -257,23 +278,25 @@ export function QRGenerator({ qrType, locale }: QRGeneratorProps) {
               </select>
             </div>
             {wifiEncryption !== 'nopass' && (
-              <div className="relative">
+              <div>
                 <label className={labelClass}>{t(locale, 'qr.password')}</label>
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  value={wifiPassword}
-                  onChange={e => setWifiPassword(e.target.value)}
-                  placeholder="••••••••"
-                  className={inputClass}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
-                  aria-label={showPassword ? t(locale, 'qr.hide_password') : t(locale, 'qr.show_password')}
-                >
-                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
-                </button>
+                <div className="relative">
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    value={wifiPassword}
+                    onChange={e => setWifiPassword(e.target.value)}
+                    placeholder="••••••••"
+                    className={inputClass}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                    aria-label={showPassword ? t(locale, 'qr.hide_password') : t(locale, 'qr.show_password')}
+                  >
+                    {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                  </button>
+                </div>
               </div>
             )}
           </>
@@ -417,7 +440,7 @@ export function QRGenerator({ qrType, locale }: QRGeneratorProps) {
           <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
             {svgString ? (
               <canvas
-                ref={el => { canvasRef.current = el; }}
+                ref={canvasRef}
                 className="max-w-full"
                 style={{ maxWidth: 320, maxHeight: 320 }}
                 role="img"
@@ -429,6 +452,18 @@ export function QRGenerator({ qrType, locale }: QRGeneratorProps) {
               </div>
             )}
           </div>
+          {errorMessage && (
+            <p className="flex items-center gap-1.5 text-sm text-red-500">
+              <AlertTriangle size={14} />
+              {errorMessage}
+            </p>
+          )}
+          {showContrastWarning && !errorMessage && (
+            <p className="flex items-center gap-1.5 text-sm text-amber-600">
+              <AlertTriangle size={14} />
+              {t(locale, 'qr.contrast_warning')}
+            </p>
+          )}
           {svgString && (
             <div className="flex gap-3">
               <button
