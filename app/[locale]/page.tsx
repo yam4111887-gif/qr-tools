@@ -123,7 +123,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </Link>
               </div>
             </div>
-            <div className="hidden lg:flex justify-center">
+            <div className="flex justify-center mt-8 lg:mt-0">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
                 <div className="flex items-center justify-center h-[300px] w-[300px] bg-white rounded-lg">
                   <QRGenerator qrType="url" locale={loc} />
@@ -195,7 +195,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
         <div className="space-y-3">
           {faqs.map((faq, i) => (
-            <details key={i} className="group rounded-lg border border-slate-200 bg-white p-4">
+            <details key={i} className="group rounded-lg border border-slate-200 bg-white p-4" aria-expanded="false">
               <summary className="flex cursor-pointer items-center justify-between font-medium text-slate-900">
                 {faq.q}
                 <ChevronDown size={18} className="text-slate-400 transition-transform group-open:rotate-180" />

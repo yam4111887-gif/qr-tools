@@ -26,6 +26,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
       url: siteConfig.url,
       siteName: title,
       type: 'website',
+      images: [{ url: '/og-image.svg', width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${title} — Free QR Code Generator`,
+      description,
+      images: ['/og-image.svg'],
     },
     alternates: {
       canonical: `/${locale}`,
@@ -42,11 +49,6 @@ const websiteSchema = {
   '@type': 'WebSite',
   name: siteConfig.name,
   url: siteConfig.url,
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: `${siteConfig.url}/search?q={search_term_string}`,
-    'query-input': 'required name=search_term_string',
-  },
 };
 
 const webAppSchema = {

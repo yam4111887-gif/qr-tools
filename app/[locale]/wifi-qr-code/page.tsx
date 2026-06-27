@@ -3,7 +3,7 @@ import { locales, defaultLocale, type Locale, t } from '@/lib/i18n';
 import { siteConfig } from '@/lib/constants';
 import { QRGenerator } from '@/components/tools/QRGenerator';
 import { AdSlot } from '@/components/ui/AdSlot';
-import { breadcrumbSchema, howToSchema } from '@/lib/tool-page';
+import { breadcrumbSchema, howToSchema, ToolPageContent, faqSchemaForTool } from '@/lib/tool-page';
 
 export function generateStaticParams() {
   return locales.map(locale => ({ locale }));
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: t(loc, 'tool.wifi'),
     description: t(loc, 'tool.wifi_desc'),
     alternates: {
-      canonical: `/${locale}/wifi-qr-code`,
+      canonical: `/${loc}/wifi-qr-code`,
       languages: Object.fromEntries(locales.map(l => [l, `https://${siteConfig.domain}/${l}/wifi-qr-code`])),
     },
   };
@@ -32,6 +32,7 @@ export default async function WifiQRPage({ params }: { params: Promise<{ locale:
     <div className="mx-auto max-w-5xl px-4 py-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema(loc, 'wifi-qr-code', title)) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema(loc, title)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchemaForTool(loc, 'wifi')) }} />
 
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-slate-900 md:text-3xl">{title}</h1>
@@ -39,6 +40,8 @@ export default async function WifiQRPage({ params }: { params: Promise<{ locale:
       </div>
 
       <QRGenerator qrType="wifi" locale={loc} />
+
+      <ToolPageContent toolKey="wifi" locale={loc} />
 
       <div className="mt-12">
         <AdSlot slot="wifi-bottom" />

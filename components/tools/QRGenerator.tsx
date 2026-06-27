@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import QRCode from 'qrcode';
-import { Download, Upload, Shield, Loader2 } from 'lucide-react';
+import { Download, Upload, Shield, Loader2, Eye, EyeOff, X } from 'lucide-react';
 import { type Locale, t } from '@/lib/i18n';
 import { formatWiFiQR, formatVCardQR, formatEmailQR, formatSMSQR, formatUrlQR } from '@/lib/qr-types';
 
@@ -44,6 +44,7 @@ export function QRGenerator({ qrType, locale }: QRGeneratorProps) {
   const [errorLevel, setErrorLevel] = useState<'L' | 'M' | 'Q' | 'H'>('M');
   const [logoDataUrl, setLogoDataUrl] = useState<string | null>(null);
   const [internalErrorLevel, setInternalErrorLevel] = useState<'L' | 'M' | 'Q' | 'H'>('M');
+  const [showPassword, setShowPassword] = useState(false);
 
   // Output
   const [canvasRef] = useState(() => ({ current: null as HTMLCanvasElement | null }));
@@ -256,15 +257,23 @@ export function QRGenerator({ qrType, locale }: QRGeneratorProps) {
               </select>
             </div>
             {wifiEncryption !== 'nopass' && (
-              <div>
+              <div className="relative">
                 <label className={labelClass}>{t(locale, 'qr.password')}</label>
                 <input
-                  type="text"
+                  type={showPassword ? 'text' : 'password'}
                   value={wifiPassword}
                   onChange={e => setWifiPassword(e.target.value)}
                   placeholder="••••••••"
                   className={inputClass}
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                  aria-label={showPassword ? t(locale, 'qr.hide_password') : t(locale, 'qr.show_password')}
+                >
+                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                </button>
               </div>
             )}
           </>
@@ -335,11 +344,11 @@ export function QRGenerator({ qrType, locale }: QRGeneratorProps) {
         <div className="grid grid-cols-2 gap-3 pt-4 border-t border-slate-200">
           <div>
             <label className={labelClass}>{t(locale, 'qr.foreground_color')}</label>
-            <input type="color" value={fgColor} onChange={e => setFgColor(e.target.value)} className={colorInputClass} />
+            <input type="color" value={fgColor} onChange={e => setFgColor(e.target.value)} className={colorInputClass} aria-label={t(locale, 'qr.foreground_color')} />
           </div>
           <div>
             <label className={labelClass}>{t(locale, 'qr.background_color')}</label>
-            <input type="color" value={bgColor} onChange={e => setBgColor(e.target.value)} className={colorInputClass} />
+            <input type="color" value={bgColor} onChange={e => setBgColor(e.target.value)} className={colorInputClass} aria-label={t(locale, 'qr.background_color')} />
           </div>
         </div>
 
@@ -376,15 +385,16 @@ export function QRGenerator({ qrType, locale }: QRGeneratorProps) {
               <img src={logoDataUrl} alt="Logo" className="h-12 w-12 rounded-lg border border-slate-200 object-contain" />
               <button
                 onClick={removeLogo}
-                className="text-sm text-red-500 hover:text-red-600"
+                className="flex items-center gap-1 text-sm text-red-500 hover:text-red-600"
               >
-                Remove
+                <X size={14} />
+                {t(locale, 'qr.remove_logo')}
               </button>
             </div>
           ) : (
             <label className="flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-slate-300 px-3 py-2 text-sm text-slate-500 hover:border-emerald-400 hover:text-emerald-600">
               <Upload size={16} />
-              <span>Choose file...</span>
+              <span>{t(locale, 'qr.choose_file')}</span>
               <input type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" />
             </label>
           )}
@@ -410,10 +420,12 @@ export function QRGenerator({ qrType, locale }: QRGeneratorProps) {
                 ref={el => { canvasRef.current = el; }}
                 className="max-w-full"
                 style={{ maxWidth: 320, maxHeight: 320 }}
+                role="img"
+                aria-label={t(locale, 'qr.preview')}
               />
             ) : (
               <div className="flex h-[320px] w-[320px] items-center justify-center text-sm text-slate-300">
-                Enter data to generate QR code
+                {t(locale, 'qr.empty_state')}
               </div>
             )}
           </div>
@@ -424,14 +436,14 @@ export function QRGenerator({ qrType, locale }: QRGeneratorProps) {
                 className="flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-600 transition-colors"
               >
                 <Download size={16} />
-                PNG
+                {t(locale, 'qr.download_png')}
               </button>
               <button
                 onClick={downloadSVG}
                 className="flex items-center gap-2 rounded-lg bg-slate-700 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 transition-colors"
               >
                 <Download size={16} />
-                SVG
+                {t(locale, 'qr.download_svg')}
               </button>
             </div>
           )}

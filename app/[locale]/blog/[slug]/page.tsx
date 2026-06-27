@@ -43,8 +43,8 @@ export default async function BlogPost({ params }: { params: Promise<{ locale: s
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: post.title.en,
-    description: post.description.en,
+    headline: post.title[loc],
+    description: post.description[loc],
     datePublished: post.date,
     author: { '@type': 'Organization', name: siteConfig.name },
     publisher: { '@type': 'Organization', name: siteConfig.name },

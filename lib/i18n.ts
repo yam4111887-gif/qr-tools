@@ -77,6 +77,62 @@ export type TranslationKey =
   | 'qr.preview'
   | 'qr.privacy_note'
   | 'qr.generate'
+  | 'qr.remove_logo'
+  | 'qr.choose_file'
+  | 'qr.empty_state'
+  | 'qr.show_password'
+  | 'qr.hide_password'
+  | 'tool.how_to_title'
+  | 'tool.faq_title'
+  | 'tool.step1_url'
+  | 'tool.step2_url'
+  | 'tool.step3_url'
+  | 'tool.step4_url'
+  | 'tool.step1_text'
+  | 'tool.step2_text'
+  | 'tool.step3_text'
+  | 'tool.step1_wifi'
+  | 'tool.step2_wifi'
+  | 'tool.step3_wifi'
+  | 'tool.step4_wifi'
+  | 'tool.step1_vcard'
+  | 'tool.step2_vcard'
+  | 'tool.step3_vcard'
+  | 'tool.step4_vcard'
+  | 'tool.step1_email'
+  | 'tool.step2_email'
+  | 'tool.step3_email'
+  | 'tool.step1_sms'
+  | 'tool.step2_sms'
+  | 'tool.step3_sms'
+  | 'tool.faq1_url_q'
+  | 'tool.faq1_url_a'
+  | 'tool.faq2_url_q'
+  | 'tool.faq2_url_a'
+  | 'tool.faq3_url_q'
+  | 'tool.faq3_url_a'
+  | 'tool.faq1_text_q'
+  | 'tool.faq1_text_a'
+  | 'tool.faq2_text_q'
+  | 'tool.faq2_text_a'
+  | 'tool.faq1_wifi_q'
+  | 'tool.faq1_wifi_a'
+  | 'tool.faq2_wifi_q'
+  | 'tool.faq2_wifi_a'
+  | 'tool.faq3_wifi_q'
+  | 'tool.faq3_wifi_a'
+  | 'tool.faq1_vcard_q'
+  | 'tool.faq1_vcard_a'
+  | 'tool.faq2_vcard_q'
+  | 'tool.faq2_vcard_a'
+  | 'tool.faq1_email_q'
+  | 'tool.faq1_email_a'
+  | 'tool.faq2_email_q'
+  | 'tool.faq2_email_a'
+  | 'tool.faq1_sms_q'
+  | 'tool.faq1_sms_a'
+  | 'tool.faq2_sms_q'
+  | 'tool.faq2_sms_a'
   | 'qr.enter_url'
   | 'qr.enter_text'
   | 'qr.ssid'
@@ -177,6 +233,62 @@ const en: Translations = {
   'qr.preview': 'Preview',
   'qr.privacy_note': 'Your data never leaves your browser. All processing is 100% client-side.',
   'qr.generate': 'Generate QR Code',
+  'qr.remove_logo': 'Remove',
+  'qr.choose_file': 'Choose file...',
+  'qr.empty_state': 'Enter data to generate QR code',
+  'qr.show_password': 'Show password',
+  'qr.hide_password': 'Hide password',
+  'tool.how_to_title': 'How to Use',
+  'tool.faq_title': 'FAQ',
+  'tool.step1_url': 'Enter your website URL in the input field above.',
+  'tool.step2_url': 'Customize the foreground and background colors if desired.',
+  'tool.step3_url': 'Optionally upload a logo to place in the center.',
+  'tool.step4_url': 'Click Download PNG or Download SVG to save your QR code.',
+  'tool.step1_text': 'Type or paste your text into the text area above.',
+  'tool.step2_text': 'Adjust colors and size to your preference.',
+  'tool.step3_text': 'Download your QR code in PNG or SVG format.',
+  'tool.step1_wifi': 'Enter your WiFi network name (SSID) and password.',
+  'tool.step2_wifi': 'Select the correct encryption type (WPA/WPA2, WEP, or None).',
+  'tool.step3_wifi': 'Customize colors and optionally add a logo.',
+  'tool.step4_wifi': 'Download and share your WiFi QR code.',
+  'tool.step1_vcard': 'Fill in your contact details: name, phone, email, etc.',
+  'tool.step2_vcard': 'Add your organization and website if desired.',
+  'tool.step3_vcard': 'Customize the appearance of your QR code.',
+  'tool.step4_vcard': 'Download and share your contact QR code.',
+  'tool.step1_email': 'Enter the recipient email address.',
+  'tool.step2_email': 'Add an optional subject and body text.',
+  'tool.step3_email': 'Download your email QR code.',
+  'tool.step1_sms': 'Enter the recipient phone number.',
+  'tool.step2_sms': 'Type your SMS message.',
+  'tool.step3_sms': 'Download your SMS QR code.',
+  'tool.faq1_url_q': 'Can I use this QR code for any URL?',
+  'tool.faq1_url_a': 'Yes, you can generate a QR code for any valid URL including websites, PDFs, images, or any online resource.',
+  'tool.faq2_url_q': 'Will the QR code work forever?',
+  'tool.faq2_url_a': 'The QR code itself never expires. As long as the destination URL is active, the QR code will continue to work.',
+  'tool.faq3_url_q': 'Can I track scans of my URL QR code?',
+  'tool.faq3_url_a': 'No, these are static QR codes with no tracking. For analytics, you would need a dynamic QR code service.',
+  'tool.faq1_text_q': 'How much text can I encode?',
+  'tool.faq1_text_a': 'QR codes can encode up to 2,953 bytes of text. However, shorter text produces simpler codes that scan more reliably.',
+  'tool.faq2_text_q': 'Can I include special characters?',
+  'tool.faq2_text_a': 'Yes, QR codes support all Unicode characters including emojis, symbols, and international text.',
+  'tool.faq1_wifi_q': 'Will guests need a password to connect?',
+  'tool.faq1_wifi_a': 'Only if your network requires one. The QR code encodes your WiFi credentials, so scanning it automatically authenticates the user.',
+  'tool.faq2_wifi_q': 'Does this work on all phones?',
+  'tool.faq2_wifi_a': 'WiFi QR codes work on most modern iOS and Android devices. Some older devices may not support this feature.',
+  'tool.faq3_wifi_q': 'Is my WiFi password secure?',
+  'tool.faq3_wifi_a': 'Yes, all processing happens in your browser. Your password is never sent to any server.',
+  'tool.faq1_vcard_q': 'What is a vCard?',
+  'tool.faq1_vcard_a': 'A vCard is a standard file format for electronic business cards. Scanning the QR code adds your contact info directly to the phone address book.',
+  'tool.faq2_vcard_q': 'Which fields are required?',
+  'tool.faq2_vcard_a': 'Only a name or phone number is required. All other fields are optional but recommended for a complete contact.',
+  'tool.faq1_email_q': 'What happens when someone scans the email QR code?',
+  'tool.faq1_email_a': 'Their phone will open the email app with the recipient, subject, and body pre-filled. They can review and send the email.',
+  'tool.faq2_email_q': 'Can I send the same email to multiple recipients?',
+  'tool.faq2_email_a': 'The QR code supports a single primary recipient. For multiple recipients, consider using a URL-based solution instead.',
+  'tool.faq1_sms_q': 'Does scanning the SMS QR code send the message automatically?',
+  'tool.faq1_sms_a': 'No, it opens the messaging app with the number and text pre-filled. The user must manually press send.',
+  'tool.faq2_sms_q': 'Can I use international phone numbers?',
+  'tool.faq2_sms_a': 'Yes, use the full international format with country code (e.g., +1234567890) for best compatibility.',
   'qr.enter_url': 'Enter URL',
   'qr.enter_text': 'Enter text',
   'qr.ssid': 'Network Name (SSID)',
@@ -276,6 +388,62 @@ const zhTW: Translations = {
   'qr.preview': '預覽',
   'qr.privacy_note': '您的資料永不離開瀏覽器。所有處理 100% 在客戶端完成。',
   'qr.generate': '產生 QR Code',
+  'qr.remove_logo': '移除',
+  'qr.choose_file': '選擇檔案...',
+  'qr.empty_state': '輸入資料以產生 QR Code',
+  'qr.show_password': '顯示密碼',
+  'qr.hide_password': '隱藏密碼',
+  'tool.how_to_title': '如何使用',
+  'tool.faq_title': '常見問題',
+  'tool.step1_url': '在上方輸入欄位輸入您的網站網址。',
+  'tool.step2_url': '視需要自訂前景色和背景色。',
+  'tool.step3_url': '選擇性上傳 Logo 放置在中央。',
+  'tool.step4_url': '點擊下載 PNG 或下載 SVG 儲存您的 QR Code。',
+  'tool.step1_text': '在上方文字區輸入或貼上您的文字。',
+  'tool.step2_text': '依偏好調整顏色和尺寸。',
+  'tool.step3_text': '下載 PNG 或 SVG 格式的 QR Code。',
+  'tool.step1_wifi': '輸入您的 WiFi 網路名稱 (SSID) 和密碼。',
+  'tool.step2_wifi': '選擇正確的加密類型 (WPA/WPA2、WEP 或無)。',
+  'tool.step3_wifi': '自訂顏色並選擇性加入 Logo。',
+  'tool.step4_wifi': '下載並分享您的 WiFi QR Code。',
+  'tool.step1_vcard': '填寫您的聯絡資訊：姓名、電話、電子郵件等。',
+  'tool.step2_vcard': '視需要加入組織和網站。',
+  'tool.step3_vcard': '自訂 QR Code 的外觀。',
+  'tool.step4_vcard': '下載並分享您的聯絡 QR Code。',
+  'tool.step1_email': '輸入收件者電子郵件地址。',
+  'tool.step2_email': '加入選填的主旨和內容。',
+  'tool.step3_email': '下載您的電子郵件 QR Code。',
+  'tool.step1_sms': '輸入收件者電話號碼。',
+  'tool.step2_sms': '輸入您的簡訊內容。',
+  'tool.step3_sms': '下載您的簡訊 QR Code。',
+  'tool.faq1_url_q': '我可以為任何網址使用這個 QR Code 嗎？',
+  'tool.faq1_url_a': '可以，您可以為任何有效的網址產生 QR Code，包括網站、PDF、圖片或任何線上資源。',
+  'tool.faq2_url_q': 'QR Code 會永遠有效嗎？',
+  'tool.faq2_url_a': 'QR Code 本身永不過期。只要目標網址有效，QR Code 就會持續運作。',
+  'tool.faq3_url_q': '我可以追蹤網址 QR Code 的掃描次數嗎？',
+  'tool.faq3_url_a': '不行，這些是無追蹤的靜態 QR Code。如需分析功能，您需要動態 QR Code 服務。',
+  'tool.faq1_text_q': '我可以編碼多少文字？',
+  'tool.faq1_text_a': 'QR Code 最多可編碼 2,953 位元組的文字。但較短的文字會產生更簡單、更容易掃描的 QR Code。',
+  'tool.faq2_text_q': '可以包含特殊字元嗎？',
+  'tool.faq2_text_a': '可以，QR Code 支援所有 Unicode 字元，包括表情符號、符號和國際文字。',
+  'tool.faq1_wifi_q': '訪客需要密碼才能連線嗎？',
+  'tool.faq1_wifi_a': '只有在您的網路需要密碼時。QR Code 會編碼您的 WiFi 認證資訊，掃描後會自動驗證使用者。',
+  'tool.faq2_wifi_q': '所有手機都支援嗎？',
+  'tool.faq2_wifi_a': 'WiFi QR Code 適用於大多數現代 iOS 和 Android 裝置。部分舊裝置可能不支援此功能。',
+  'tool.faq3_wifi_q': '我的 WiFi 密碼安全嗎？',
+  'tool.faq3_wifi_a': '安全，所有處理都在您的瀏覽器中完成。您的密碼永遠不會發送到任何伺服器。',
+  'tool.faq1_vcard_q': '什麼是 vCard？',
+  'tool.faq1_vcard_a': 'vCard 是一種標準的電子名片檔案格式。掃描 QR Code 會直接將聯絡資訊加入手機通訊錄。',
+  'tool.faq2_vcard_q': '哪些欄位是必填的？',
+  'tool.faq2_vcard_a': '只需姓名或電話號碼。其他欄位為選填，但建議填寫以提供完整聯絡資訊。',
+  'tool.faq1_email_q': '掃描電子郵件 QR Code 後會發生什麼？',
+  'tool.faq1_email_a': '手機會開啟電子郵件應用程式，並預先填入收件者、主旨和內容。使用者可以檢閱後再寄出。',
+  'tool.faq2_email_q': '我可以寄送電子郵件給多個收件者嗎？',
+  'tool.faq2_email_a': 'QR Code 支援單一主要收件者。如需多個收件者，建議改用網址方案。',
+  'tool.faq1_sms_q': '掃描簡訊 QR Code 會自動發送嗎？',
+  'tool.faq1_sms_a': '不會，它會開啟訊息應用程式並預先填入號碼和文字，使用者必須手動按下傳送。',
+  'tool.faq2_sms_q': '可以使用國際電話號碼嗎？',
+  'tool.faq2_sms_a': '可以，請使用包含國碼的完整國際格式（例如 +1234567890）以獲得最佳相容性。',
   'qr.enter_url': '輸入網址',
   'qr.enter_text': '輸入文字',
   'qr.ssid': '網路名稱 (SSID)',
@@ -375,6 +543,62 @@ const es: Translations = {
   'qr.preview': 'Vista previa',
   'qr.privacy_note': 'Tus datos nunca salen del navegador. Todo el procesamiento es 100% del lado del cliente.',
   'qr.generate': 'Generar código QR',
+  'qr.remove_logo': 'Quitar',
+  'qr.choose_file': 'Elegir archivo...',
+  'qr.empty_state': 'Ingresa datos para generar el código QR',
+  'qr.show_password': 'Mostrar contraseña',
+  'qr.hide_password': 'Ocultar contraseña',
+  'tool.how_to_title': 'Cómo usar',
+  'tool.faq_title': 'Preguntas frecuentes',
+  'tool.step1_url': 'Ingresa la URL de tu sitio web en el campo de arriba.',
+  'tool.step2_url': 'Personaliza los colores de primer plano y fondo si lo deseas.',
+  'tool.step3_url': 'Opcionalmente sube un logo para colocar en el centro.',
+  'tool.step4_url': 'Haz clic en Descargar PNG o Descargar SVG para guardar tu código QR.',
+  'tool.step1_text': 'Escribe o pega tu texto en el área de texto de arriba.',
+  'tool.step2_text': 'Ajusta los colores y el tamaño a tu preferencia.',
+  'tool.step3_text': 'Descarga tu código QR en formato PNG o SVG.',
+  'tool.step1_wifi': 'Ingresa el nombre de tu red WiFi (SSID) y la contraseña.',
+  'tool.step2_wifi': 'Selecciona el tipo de cifrado correcto (WPA/WPA2, WEP o Ninguno).',
+  'tool.step3_wifi': 'Personaliza los colores y opcionalmente añade un logo.',
+  'tool.step4_wifi': 'Descarga y comparte tu código QR de WiFi.',
+  'tool.step1_vcard': 'Completa tus datos de contacto: nombre, teléfono, email, etc.',
+  'tool.step2_vcard': 'Añade tu organización y sitio web si lo deseas.',
+  'tool.step3_vcard': 'Personaliza la apariencia de tu código QR.',
+  'tool.step4_vcard': 'Descarga y comparte tu código QR de contacto.',
+  'tool.step1_email': 'Ingresa la dirección de email del destinatario.',
+  'tool.step2_email': 'Añade un asunto y cuerpo opcionales.',
+  'tool.step3_email': 'Descarga tu código QR de email.',
+  'tool.step1_sms': 'Ingresa el número de teléfono del destinatario.',
+  'tool.step2_sms': 'Escribe tu mensaje SMS.',
+  'tool.step3_sms': 'Descarga tu código QR de SMS.',
+  'tool.faq1_url_q': '¿Puedo usar este código QR para cualquier URL?',
+  'tool.faq1_url_a': 'Sí, puedes generar un código QR para cualquier URL válida incluyendo sitios web, PDFs, imágenes o cualquier recurso en línea.',
+  'tool.faq2_url_q': '¿El código QR funcionará para siempre?',
+  'tool.faq2_url_a': 'El código QR en sí nunca caduca. Mientras la URL de destino esté activa, el código QR seguirá funcionando.',
+  'tool.faq3_url_q': '¿Puedo rastrear los escaneos de mi código QR?',
+  'tool.faq3_url_a': 'No, estos son códigos QR estáticos sin seguimiento. Para analíticas, necesitarías un servicio de códigos QR dinámicos.',
+  'tool.faq1_text_q': '¿Cuánto texto puedo codificar?',
+  'tool.faq1_text_a': 'Los códigos QR pueden codificar hasta 2.953 bytes de texto. Sin embargo, textos más cortos producen códigos más simples que se escanean mejor.',
+  'tool.faq2_text_q': '¿Puedo incluir caracteres especiales?',
+  'tool.faq2_text_a': 'Sí, los códigos QR soportan todos los caracteres Unicode incluyendo emojis, símbolos e texto internacional.',
+  'tool.faq1_wifi_q': '¿Los invitados necesitarán una contraseña para conectarse?',
+  'tool.faq1_wifi_a': 'Solo si tu red lo requiere. El código QR codifica tus credenciales WiFi, por lo que escanearlo autentica al usuario automáticamente.',
+  'tool.faq2_wifi_q': '¿Funciona en todos los teléfonos?',
+  'tool.faq2_wifi_a': 'Los códigos QR de WiFi funcionan en la mayoría de dispositivos iOS y Android modernos. Algunos dispositivos antiguos pueden no soportar esta función.',
+  'tool.faq3_wifi_q': '¿Es segura mi contraseña WiFi?',
+  'tool.faq3_wifi_a': 'Sí, todo el procesamiento ocurre en tu navegador. Tu contraseña nunca se envía a ningún servidor.',
+  'tool.faq1_vcard_q': '¿Qué es una vCard?',
+  'tool.faq1_vcard_a': 'Una vCard es un formato estándar para tarjetas de presentación electrónicas. Escanear el código QR añade tu información de contacto directamente a la libreta de direcciones del teléfono.',
+  'tool.faq2_vcard_q': '¿Qué campos son obligatorios?',
+  'tool.faq2_vcard_a': 'Solo se requiere un nombre o número de teléfono. Todos los demás campos son opcionales pero recomendados.',
+  'tool.faq1_email_q': '¿Qué pasa cuando alguien escanea el código QR de email?',
+  'tool.faq1_email_a': 'Su teléfono abrirá la aplicación de email con el destinatario, asunto y cuerpo pre-rellenados. Pueden revisar y enviar el email.',
+  'tool.faq2_email_q': '¿Puedo enviar el mismo email a múltiples destinatarios?',
+  'tool.faq2_email_a': 'El código QR soporta un único destinatario principal. Para múltiples destinatarios, considera usar una solución basada en URL.',
+  'tool.faq1_sms_q': '¿Escanear el código QR de SMS envía el mensaje automáticamente?',
+  'tool.faq1_sms_a': 'No, abre la aplicación de mensajería con el número y texto pre-rellenados. El usuario debe presionar enviar manualmente.',
+  'tool.faq2_sms_q': '¿Puedo usar números de teléfono internacionales?',
+  'tool.faq2_sms_a': 'Sí, usa el formato internacional completo con código de país (ej., +1234567890) para mejor compatibilidad.',
   'qr.enter_url': 'Introduce URL',
   'qr.enter_text': 'Introduce texto',
   'qr.ssid': 'Nombre de red (SSID)',
@@ -417,7 +641,7 @@ const ja: Translations = {
   'nav.terms': '利用規約',
   'nav.disclaimer': '免責事項',
   'nav.cookies': 'Cookie',
-  'footer.rights': 'All rights reserved.',
+  'footer.rights': '著作権所有。',
   'footer.description': '無料でプライベートなQRコードジェネレーター。あらゆる目的のカスタムQRコードを作成 — 登録不要。',
   'footer.tools': 'QRツール',
   'footer.company': '会社',
@@ -474,6 +698,62 @@ const ja: Translations = {
   'qr.preview': 'プレビュー',
   'qr.privacy_note': 'データはブラウザから離れません。すべての処理は100%クライアント側で行われます。',
   'qr.generate': 'QRコードを生成',
+  'qr.remove_logo': '削除',
+  'qr.choose_file': 'ファイルを選択...',
+  'qr.empty_state': 'データを入力してQRコードを生成',
+  'qr.show_password': 'パスワードを表示',
+  'qr.hide_password': 'パスワードを非表示',
+  'tool.how_to_title': '使い方',
+  'tool.faq_title': 'よくある質問',
+  'tool.step1_url': '上の入力フィールドにウェブサイトのURLを入力します。',
+  'tool.step2_url': '必要に応じて前景色と背景色をカスタマイズします。',
+  'tool.step3_url': '中央に配置するロゴをオプションでアップロードします。',
+  'tool.step4_url': 'PNGダウンロードまたはSVGダウンロードをクリックしてQRコードを保存します。',
+  'tool.step1_text': '上のテキストエリアにテキストを入力または貼り付けます。',
+  'tool.step2_text': 'お好みに合わせて色とサイズを調整します。',
+  'tool.step3_text': 'PNGまたはSVG形式でQRコードをダウンロードします。',
+  'tool.step1_wifi': 'WiFiネットワーク名（SSID）とパスワードを入力します。',
+  'tool.step2_wifi': '正しい暗号化タイプ（WPA/WPA2、WEP、またはなし）を選択します。',
+  'tool.step3_wifi': '色をカスタマイズし、オプションでロゴを追加します。',
+  'tool.step4_wifi': 'WiFi QRコードをダウンロードして共有します。',
+  'tool.step1_vcard': '連絡先情報（名前、電話番号、メールなど）を入力します。',
+  'tool.step2_vcard': '必要に応じて組織とウェブサイトを追加します。',
+  'tool.step3_vcard': 'QRコードの外観をカスタマイズします。',
+  'tool.step4_vcard': '連絡先QRコードをダウンロードして共有します。',
+  'tool.step1_email': '受信者のメールアドレスを入力します。',
+  'tool.step2_email': 'オプションの件名と本文を追加します。',
+  'tool.step3_email': 'メールQRコードをダウンロードします。',
+  'tool.step1_sms': '受信者の電話番号を入力します。',
+  'tool.step2_sms': 'SMSメッセージを入力します。',
+  'tool.step3_sms': 'SMS QRコードをダウンロードします。',
+  'tool.faq1_url_q': 'どんなURLでもQRコードにできますか？',
+  'tool.faq1_url_a': 'はい、ウェブサイト、PDF、画像、あらゆるオンラインリソースを含む有効なURLのQRコードを生成できます。',
+  'tool.faq2_url_q': 'QRコードは永遠に機能しますか？',
+  'tool.faq2_url_a': 'QRコード自体は期限切れになりません。リンク先URLがアクティブである限り、QRコードは機能し続けます。',
+  'tool.faq3_url_q': 'URL QRコードのスキャンを追跡できますか？',
+  'tool.faq3_url_a': 'いいえ、これらは追跡機能のない静的QRコードです。分析には動的QRコードサービスが必要です。',
+  'tool.faq1_text_q': 'どれくらいのテキストをエンコードできますか？',
+  'tool.faq1_text_a': 'QRコードは最大2,953バイトのテキストをエンコードできます。ただし、短いテキストはスキャンしやすいシンプルなコードを生成します。',
+  'tool.faq2_text_q': '特殊文字を含めることはできますか？',
+  'tool.faq2_text_a': 'はい、QRコードは絵文字、記号、国際テキストを含むすべてのUnicode文字をサポートしています。',
+  'tool.faq1_wifi_q': 'ゲストは接続にパスワードが必要ですか？',
+  'tool.faq1_wifi_a': 'ネットワークがパスワードを必要とする場合のみです。QRコードがWiFi認証情報をエンコードするため、スキャンするだけで自動的に認証されます。',
+  'tool.faq2_wifi_q': 'すべての携帯電話で機能しますか？',
+  'tool.faq2_wifi_a': 'WiFi QRコードはほとんどの最新のiOSおよびAndroidデバイスで機能します。一部の古いデバイスではサポートされていない場合があります。',
+  'tool.faq3_wifi_q': 'WiFiパスワードは安全ですか？',
+  'tool.faq3_wifi_a': 'はい、すべての処理はブラウザ内で行われます。パスワードがサーバーに送信されることはありません。',
+  'tool.faq1_vcard_q': 'vCardとは何ですか？',
+  'tool.faq1_vcard_a': 'vCardは電子名刺の標準ファイル形式です。QRコードをスキャンすると、連絡先情報が直接電話のアドレス帳に追加されます。',
+  'tool.faq2_vcard_q': '必須フィールドはどれですか？',
+  'tool.faq2_vcard_a': '名前または電話番号のみが必須です。他のフィールドは任意ですが、完全な連絡先情報のために推奨されます。',
+  'tool.faq1_email_q': 'メールQRコードをスキャンするとどうなりますか？',
+  'tool.faq1_email_a': '携帯電話のメールアプリが開き、受信者、件名、本文が事前入力されます。内容を確認してから送信できます。',
+  'tool.faq2_email_q': '同じメールを複数の受信者に送信できますか？',
+  'tool.faq2_email_a': 'QRコードは単一の主要受信者をサポートしています。複数の受信者には、URLベースのソリューションを検討してください。',
+  'tool.faq1_sms_q': 'SMS QRコードをスキャンすると自動的にメッセージが送信されますか？',
+  'tool.faq1_sms_a': 'いいえ、メッセージングアプリが開き、番号とテキストが事前入力されます。ユーザーが手動で送信を押す必要があります。',
+  'tool.faq2_sms_q': '国際電話番号を使用できますか？',
+  'tool.faq2_sms_a': 'はい、最適な互換性のために国コードを含む完全な国際形式（例：+1234567890）を使用してください。',
   'qr.enter_url': 'URLを入力',
   'qr.enter_text': 'テキストを入力',
   'qr.ssid': 'ネットワーク名（SSID）',
