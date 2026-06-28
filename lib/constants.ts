@@ -5,14 +5,14 @@ import type { TranslationKey } from './i18n';
 export const siteConfig = {
   name: 'QR Tools',
   domain: 'qrtools.app',
-  url: 'https://qrtools.app',
+  url: 'https://qr-tools-tau.vercel.app',
 };
 
 export const navLinks: { key: TranslationKey; href: string }[] = [
   { key: 'nav.home', href: '' },
   { key: 'nav.tools', href: '#tools' },
-  { key: 'nav.blog', href: '/blog' },
-  { key: 'nav.about', href: '/about' },
+  { key: 'nav.blog', href: 'blog' },
+  { key: 'nav.about', href: 'about' },
 ];
 
 export const toolSlugs = [

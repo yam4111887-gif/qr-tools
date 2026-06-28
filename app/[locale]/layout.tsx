@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
     alternates: {
       canonical: `/${locale}`,
       languages: Object.fromEntries(
-        locales.map(l => [l, `https://${siteConfig.domain}/${l}`])
+        locales.map(l => [l, `${siteConfig.url}/${l}`])
       ),
     },
     robots: { index: true, follow: true },

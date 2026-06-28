@@ -23,15 +23,22 @@ export function Navbar({ locale }: { locale: Locale }) {
         </Link>
 
         <div className="hidden md:flex items-center gap-6">
-          {navLinks.map(link => (
+          {navLinks.map(link => {
+            const href = link.href === ''
+              ? `/${locale}`
+              : link.href.startsWith('#')
+                ? `/${locale}${link.href}`
+                : `/${locale}/${link.href}`;
+            return (
             <Link
               key={link.key}
-              href={link.href.startsWith('#') ? `/${locale}${link.href}` : `/${locale}/${link.href}`}
+              href={href}
               className="text-sm text-slate-600 hover:text-slate-900 transition-colors"
             >
               {t(locale, link.key)}
             </Link>
-          ))}
+            );
+          })}
           <LanguageSwitcher currentLocale={locale} />
         </div>
 
@@ -48,16 +55,23 @@ export function Navbar({ locale }: { locale: Locale }) {
 
       {mobileOpen && (
         <div className="md:hidden border-t border-slate-200 bg-white px-4 py-3 space-y-2">
-          {navLinks.map(link => (
+          {navLinks.map(link => {
+            const href = link.href === ''
+              ? `/${locale}`
+              : link.href.startsWith('#')
+                ? `/${locale}${link.href}`
+                : `/${locale}/${link.href}`;
+            return (
             <Link
               key={link.key}
-              href={link.href.startsWith('#') ? `/${locale}${link.href}` : `/${locale}/${link.href}`}
+              href={href}
               className="block py-2 text-sm text-slate-600 hover:text-slate-900"
               onClick={() => setMobileOpen(false)}
             >
               {t(locale, link.key)}
             </Link>
-          ))}
+            );
+          })}
         </div>
       )}
     </header>
