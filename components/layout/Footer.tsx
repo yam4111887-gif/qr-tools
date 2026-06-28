@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { QrCode } from 'lucide-react';
 import { type Locale, t } from '@/lib/i18n';
 import { footerLinks, siteConfig } from '@/lib/constants';
+import { KofiButton } from '@/components/ui/KofiButton';
 
 export function Footer({ locale }: { locale: Locale }) {
   const links = footerLinks(locale);
@@ -71,11 +72,14 @@ export function Footer({ locale }: { locale: Locale }) {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="mt-8 border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-slate-400">
             &copy; {year} {siteConfig.name}. {t(locale, 'footer.rights')}
           </p>
-          <p className="text-sm text-slate-400">{siteConfig.domain}</p>
+          <div className="flex items-center gap-4">
+            <KofiButton />
+            <p className="text-sm text-slate-400">{siteConfig.domain}</p>
+          </div>
         </div>
       </div>
     </footer>

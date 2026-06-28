@@ -4,6 +4,7 @@ import { siteConfig } from '@/lib/constants';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { Analytics } from '@/components/ui/Analytics';
+import { CookieConsent } from '@/components/CookieConsent';
 
 export function generateStaticParams() {
   return locales.map(locale => ({ locale }));
@@ -26,15 +27,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
       url: siteConfig.url,
       siteName: title,
       type: 'website',
-      // TODO: Replace with a proper 1200x630 PNG OG image for social sharing
-      images: [{ url: '/icon.svg', width: 512, height: 512 }],
+      images: [{ url: '/og-image.svg', width: 1200, height: 630, alt: 'QR Tools — Free QR Code Generator' }],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${title} — Free QR Code Generator`,
       description,
-      // TODO: Replace with a proper PNG OG image for Twitter
-      images: ['/icon.svg'],
+      images: ['/og-image.svg'],
     },
     alternates: {
       canonical: `/${locale}`,
@@ -92,6 +91,7 @@ export default async function LocaleLayout({
         <main className="flex-1">{children}</main>
         <Footer locale={loc} />
         <Analytics />
+        <CookieConsent locale={loc} />
       </body>
     </html>
   );
